@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Modern Portfolio Website">
+    <title>Portfolio - Your Name</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="nav__logo">
+                <svg class="logo-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="4" y="4" width="24" height="24" rx="6" stroke="currentColor" stroke-width="2"/>
+                    <path d="M12 12L20 20M20 12L12 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <span class="logo-text">Portfolio</span>
+            </a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="#home" class="nav__link active-link">Home</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#team" class="nav__link">Team</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#projects" class="nav__link">Projects</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#contact" class="nav__link">Contact</a>
+                    </li>
+                </ul>
+                <div class="nav__close" id="nav-close">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero section" id="home">
+        <div class="hero__bg">
+            <!-- 건설 현장 느낌의 기하학 패턴 -->
+            <div class="hero__grid-pattern"></div>
+            
+            <!-- 배경 그라데이션 shape -->
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            
+            <!-- 강조 장식 요소 -->
+            <div class="hero__accent-lines">
+                <div class="accent-line accent-line-1"></div>
+                <div class="accent-line accent-line-2"></div>
+                <div class="accent-line accent-line-3"></div>
+            </div>
+        </div>
+        
+        <div class="hero__container container">
+            <div class="hero__content">
+                <h1 class="hero__title">
+                    안녕하십니까!<br>
+                    <span class="hero__name">미장공 정근수</span><br>
+                    입니다.
+                </h1>
+                <p class="hero__description">
+                    뛰어난 품질을 위한 작업이 저의 목표입니다.
+                </p>
+                <div class="hero__buttons">
+                    <a href="#projects" class="button button-primary">프로젝트 보기</a>
+                    <a href="#contact" class="button button-outline">연락하기</a>
+                </div>
+            </div>
+
+            <!-- 작업 도구 이미지 섹션 -->
+            <div class="hero__tools">
+                <div class="tool-card" data-tool="trowel">
+                    <div class="tool-image">
+                        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&h=400&fit=crop&q=80" 
+                             alt="Trowel - 미장 흙손" 
+                             loading="lazy">
+                    </div>
+                    <div class="tool-label">
+                        <span class="tool-name">Trowel</span>
+                        <span class="tool-description">정밀 마감 도구</span>
+                    </div>
+                </div>
+
+                <div class="tool-card" data-tool="power-trowel">
+                    <div class="tool-image">
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&h=400&fit=crop&q=80" 
+                             alt="Power Trowel - 전동 흙손" 
+                             loading="lazy">
+                    </div>
+                    <div class="tool-label">
+                        <span class="tool-name">Power Trowel</span>
+                        <span class="tool-description">대면적 마감 장비</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-down">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 5V19M12 19L5 12M12 19L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Team Strengths Section -->
+    <section class="team-strengths section" id="team">
+        <div class="container">
+            <h2 class="section__title">한국인 전문 미장팀의 차별화된 강점</h2>
+            <p class="section__subtitle">품질과 소통을 최우선으로 하는 3인 전문가 팀</p>
+
+            <div class="strengths__grid">
+                <!-- Strength Card 1: Korean Team -->
+                <article class="strength__card" data-animate>
+                    <div class="strength__icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89318 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="strength__title">한국인 팀 구성</h3>
+                    <p class="strength__description">
+                        3명의 한국인 전문가로 구성된 우리 팀은 원활한 의사소통과 명확한 지시사항 전달을 보장합니다. 
+                        언어 장벽이 없어 고객의 요구사항을 정확히 이해하고 반영합니다.
+                    </p>
+                    <ul class="strength__features">
+                        <li>의사소통 100% 원활</li>
+                        <li>명확한 작업 지시</li>
+                        <li>고객 요구사항 정확한 반영</li>
+                    </ul>
+                </article>
+
+                <!-- Strength Card 2: Craftsmanship -->
+                <article class="strength__card" data-animate>
+                    <div class="strength__icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="strength__title">장인정신과 기술력</h3>
+                    <p class="strength__description">
+                        수년간의 경력으로 축적된 노하우와 정밀한 시공 기술을 바탕으로, 
+                        최고 품질의 미장 작업을 제공합니다. 품질은 타협의 대상이 아닙니다.
+                    </p>
+                    <ul class="strength__features">
+                        <li>경력 기반 전문 노하우</li>
+                        <li>정밀한 시공 기술</li>
+                        <li>품질 최우선 원칙</li>
+                    </ul>
+                </article>
+
+                <!-- Strength Card 3: Premium Quality -->
+                <article class="strength__card" data-animate>
+                    <div class="strength__icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="strength__title">프리미엄 품질 지향</h3>
+                    <p class="strength__description">
+                        저가 경쟁에 동참하지 않습니다. 대신 뛰어난 마감 품질과 신뢰할 수 있는 결과물로 
+                        고객의 기대를 뛰어넘는 가치를 제공합니다.
+                    </p>
+                    <ul class="strength__features">
+                        <li>저가 경쟁 거부</li>
+                        <li>최상급 마감 품질</li>
+                        <li>신뢰할 수 있는 결과물</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects section" id="projects">
+        <div class="container">
+            <h2 class="section__title">Featured Projects</h2>
+            <p class="section__subtitle">최근 작업한 프로젝트들입니다</p>
+
+            <div class="projects__grid">
+                <!-- Project Card 1 -->
+                <article class="project__card" data-animate>
+                    <div class="project__image">
+                        <div class="project__placeholder project__placeholder-1">
+                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="8" y="8" width="48" height="48" rx="8" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="24" cy="24" r="4" fill="currentColor"/>
+                                <path d="M8 48L24 32L32 40L56 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="project__content">
+                        <h3 class="project__title">E-Commerce Platform</h3>
+                        <p class="project__description">
+                            모던한 UI/UX를 갖춘 전자상거래 플랫폼입니다. 실시간 결제, 장바구니, 주문 관리 기능을 구현했습니다.
+                        </p>
+                        <div class="project__tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">MongoDB</span>
+                            <span class="tag">Stripe</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project Card 2 -->
+                <article class="project__card" data-animate>
+                    <div class="project__image">
+                        <div class="project__placeholder project__placeholder-2">
+                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="12" y="16" width="40" height="32" rx="4" stroke="currentColor" stroke-width="2"/>
+                                <path d="M20 28H44M20 36H36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <circle cx="28" cy="24" r="2" fill="currentColor"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="project__content">
+                        <h3 class="project__title">Task Management App</h3>
+                        <p class="project__description">
+                            팀 협업을 위한 태스크 관리 애플리케이션입니다. 드래그 앤 드롭, 실시간 동기화 기능을 제공합니다.
+                        </p>
+                        <div class="project__tags">
+                            <span class="tag">Vue.js</span>
+                            <span class="tag">Firebase</span>
+                            <span class="tag">Tailwind</span>
+                            <span class="tag">WebSocket</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project Card 3 -->
+                <article class="project__card" data-animate>
+                    <div class="project__image">
+                        <div class="project__placeholder project__placeholder-3">
+                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="32" cy="32" r="20" stroke="currentColor" stroke-width="2"/>
+                                <path d="M32 20V32L40 40" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <circle cx="32" cy="12" r="2" fill="currentColor"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="project__content">
+                        <h3 class="project__title">Analytics Dashboard</h3>
+                        <p class="project__description">
+                            데이터 시각화 대시보드입니다. 차트, 그래프, 실시간 데이터 업데이트 기능을 구현했습니다.
+                        </p>
+                        <div class="project__tags">
+                            <span class="tag">Next.js</span>
+                            <span class="tag">TypeScript</span>
+                            <span class="tag">D3.js</span>
+                            <span class="tag">PostgreSQL</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact section" id="contact">
+        <div class="container">
+            <h2 class="section__title">견적 문의나 협업 제안을 기다리고 있습니다.</h2>
+            <p class="section__subtitle">아래의 연락처로 연락주시면 빠른 답변을 드리겠습니다.</p>
+
+            <div class="contact__container">
+                <div class="contact__info">
+                    <div class="contact__card">
+                        <svg class="contact__icon" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <h3>전화</h3>
+                        <p>010-5535-7129</p>
+                    </div>
+
+                    <div class="contact__card">
+                        <svg class="contact__icon" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 8L10.89 13.26C11.2187 13.4793 11.6049 13.5963 12 13.5963C12.3951 13.5963 12.7813 13.4793 13.11 13.26L21 8M5 19H19C19.5304 19 20.0391 18.7893 20.4142 18.4142C20.7893 18.0391 21 17.5304 21 17V7C21 6.46957 20.7893 5.96086 20.4142 5.58579C20.0391 5.21071 19.5304 5 19 5H5C4.46957 5 3.96086 5.21071 3.58579 5.58579C3.21071 5.96086 3 6.46957 3 7V17C3 17.5304 3.21071 18.0391 3.58579 18.4142C3.96086 18.7893 4.46957 19 5 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <h3>Email</h3>
+                        <p>pgoroum60@gmail.com</p>
+                    </div>
+
+                    <div class="contact__card">
+                        <svg class="contact__icon" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 7.61305 3.94821 5.32387 5.63604 3.63604C7.32387 1.94821 9.61305 1 12 1C14.3869 1 16.6761 1.94821 18.364 3.63604C20.0518 5.32387 21 7.61305 21 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        <h3>Location</h3>
+                        <p>전국팔도, 안 가는 곳 없습니다. <br>어디든 부담 없이 불러주세요.</p>
+                    </div>
+
+                    <div class="contact__card">
+                        <svg class="contact__icon" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <h3>카카오톡</h3>
+                        <p>ID - pgoroum</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__social">
+                    <a href="#" class="footer__social-link" aria-label="GitHub">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="footer__social-link" aria-label="LinkedIn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="footer__social-link" aria-label="Twitter">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                        </svg>
+                    </a>
+                </div>
+                <p class="footer__copy">
+                    &copy; 2025 Portfolio. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
