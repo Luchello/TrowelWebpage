@@ -925,6 +925,22 @@ button {
     color: var(--text-secondary);
 }
 
+.phone-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.phone-link:hover {
+    color: var(--accent-primary);
+    text-decoration: underline;
+}
+
+.phone-link:active {
+    transform: scale(0.98);
+}
+
 /* ==================== FOOTER ==================== */
 .footer {
     background: var(--bg-secondary);
