@@ -283,6 +283,148 @@ window.addEventListener('scroll', debouncedScrollHeader);
 window.addEventListener('scroll', debouncedUpdateActiveLink);
 window.addEventListener('scroll', debouncedRevealSections);
 
+// ==================== PROJECTS SLIDER ====================
+
+/**
+ * Projects slider functionality
+ * Supports responsive layout with different slides per view based on screen size
+ */
+const projectsSlider = (() => {
+    const slider = document.querySelector('.projects__slider');
+    const prevBtn = document.querySelector('.slider__nav--prev');
+    const nextBtn = document.querySelector('.slider__nav--next');
+    const cards = document.querySelectorAll('.project__card');
+    
+    if (!slider || !prevBtn || !nextBtn || cards.length === 0) {
+        return null;
+    }
+    
+    let currentIndex = 0;
+    let slidesPerView = 3;
+    let isTransitioning = false;
+    
+    /**
+     * Get number of slides to show based on screen width
+     */
+    const getSlidesPerView = () => {
+        const width = window.innerWidth;
+        if (width >= 1200) return 3;
+        if (width >= 768) return 2;
+        return 1;
+    };
+    
+    /**
+     * Calculate maximum index based on total slides and slides per view
+     */
+    const getMaxIndex = () => {
+        return Math.max(0, cards.length - slidesPerView);
+    };
+    
+    /**
+     * Update slider position
+     */
+    const updateSliderPosition = () => {
+        if (isTransitioning) return;
+        
+        isTransitioning = true;
+        const cardWidth = cards[0].offsetWidth;
+        const gap = parseFloat(getComputedStyle(slider).gap) || 0;
+        const offset = -(currentIndex * (cardWidth + gap));
+        
+        slider.style.transform = `translateX(${offset}px)`;
+        
+        // Update button states
+        updateButtonStates();
+        
+        // Reset transition lock after animation completes
+        setTimeout(() => {
+            isTransitioning = false;
+        }, 500);
+    };
+    
+    /**
+     * Update navigation button states
+     */
+    const updateButtonStates = () => {
+        const maxIndex = getMaxIndex();
+        
+        if (currentIndex <= 0) {
+            prevBtn.style.opacity = '0.5';
+            prevBtn.style.cursor = 'not-allowed';
+        } else {
+            prevBtn.style.opacity = '1';
+            prevBtn.style.cursor = 'pointer';
+        }
+        
+        if (currentIndex >= maxIndex) {
+            nextBtn.style.opacity = '0.5';
+            nextBtn.style.cursor = 'not-allowed';
+        } else {
+            nextBtn.style.opacity = '1';
+            nextBtn.style.cursor = 'pointer';
+        }
+    };
+    
+    /**
+     * Navigate to previous slide
+     */
+    const prevSlide = () => {
+        if (isTransitioning || currentIndex <= 0) return;
+        currentIndex = Math.max(0, currentIndex - 1);
+        updateSliderPosition();
+    };
+    
+    /**
+     * Navigate to next slide
+     */
+    const nextSlide = () => {
+        const maxIndex = getMaxIndex();
+        if (isTransitioning || currentIndex >= maxIndex) return;
+        currentIndex = Math.min(maxIndex, currentIndex + 1);
+        updateSliderPosition();
+    };
+    
+    /**
+     * Handle window resize
+     */
+    const handleResize = debounce(() => {
+        const newSlidesPerView = getSlidesPerView();
+        
+        if (newSlidesPerView !== slidesPerView) {
+            slidesPerView = newSlidesPerView;
+            
+            // Adjust current index if needed
+            const maxIndex = getMaxIndex();
+            if (currentIndex > maxIndex) {
+                currentIndex = maxIndex;
+            }
+            
+            updateSliderPosition();
+        }
+    }, 250);
+    
+    /**
+     * Initialize slider
+     */
+    const init = () => {
+        slidesPerView = getSlidesPerView();
+        updateButtonStates();
+        
+        // Event listeners
+        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', nextSlide);
+        window.addEventListener('resize', handleResize);
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') prevSlide();
+            if (e.key === 'ArrowRight') nextSlide();
+        });
+    };
+    
+    return { init };
+})();
+
 // ==================== INITIALIZATION ====================
 
 /**
@@ -293,6 +435,11 @@ document.addEventListener('DOMContentLoaded', () => {
     scrollHeader();
     updateActiveLink();
     revealSections();
+    
+    // Initialize projects slider
+    if (projectsSlider) {
+        projectsSlider.init();
+    }
     
     console.log('Portfolio website initialized successfully!');
 });

@@ -203,81 +203,188 @@
             <h2 class="section__title">Featured Projects</h2>
             <p class="section__subtitle">최근 작업한 프로젝트들입니다</p>
 
-            <div class="projects__grid">
-                <!-- Project Card 1 -->
-                <article class="project__card" data-animate>
-                    <div class="project__image">
-                        <div class="project__placeholder project__placeholder-1">
-                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="8" y="8" width="48" height="48" rx="8" stroke="currentColor" stroke-width="2"/>
-                                <circle cx="24" cy="24" r="4" fill="currentColor"/>
-                                <path d="M8 48L24 32L32 40L56 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
+            <div class="projects__slider-container">
+                <div class="projects__slider">
+                    <!-- Project Card 1 -->
+                    <article class="project__card">
+                        <div class="project__image">
+                            <img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&h=600&fit=crop&q=80" 
+                                 alt="고급 주택 벽면 미장" 
+                                 loading="lazy">
                         </div>
-                    </div>
-                    <div class="project__content">
-                        <h3 class="project__title">E-Commerce Platform</h3>
-                        <p class="project__description">
-                            모던한 UI/UX를 갖춘 전자상거래 플랫폼입니다. 실시간 결제, 장바구니, 주문 관리 기능을 구현했습니다.
-                        </p>
-                        <div class="project__tags">
-                            <span class="tag">React</span>
-                            <span class="tag">Node.js</span>
-                            <span class="tag">MongoDB</span>
-                            <span class="tag">Stripe</span>
+                        <div class="project__content">
+                            <h3 class="project__title">고급 주택 벽면 미장</h3>
+                            <p class="project__description">
+                                서울 강남구 신축 주택의 내부 벽면 미장 작업입니다. 
+                                정밀한 수평 맞춤과 매끄러운 마감으로 완벽한 품질을 구현했습니다.
+                            </p>
+                            <div class="project__tags">
+                                <span class="tag">내부 벽면</span>
+                                <span class="tag">프리미엄 마감</span>
+                                <span class="tag">주택</span>
+                            </div>
                         </div>
-                    </div>
-                </article>
+                    </article>
 
-                <!-- Project Card 2 -->
-                <article class="project__card" data-animate>
-                    <div class="project__image">
-                        <div class="project__placeholder project__placeholder-2">
-                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="12" y="16" width="40" height="32" rx="4" stroke="currentColor" stroke-width="2"/>
-                                <path d="M20 28H44M20 36H36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                <circle cx="28" cy="24" r="2" fill="currentColor"/>
-                            </svg>
+                    <!-- Project Card 2 -->
+                    <article class="project__card">
+                        <div class="project__image">
+                            <img src="https://images.unsplash.com/photo-1590932550144-d67ff65fff69?w=800&h=600&fit=crop&q=80" 
+                                 alt="상업시설 바닥 콘크리트 마감" 
+                                 loading="lazy">
                         </div>
-                    </div>
-                    <div class="project__content">
-                        <h3 class="project__title">Task Management App</h3>
-                        <p class="project__description">
-                            팀 협업을 위한 태스크 관리 애플리케이션입니다. 드래그 앤 드롭, 실시간 동기화 기능을 제공합니다.
-                        </p>
-                        <div class="project__tags">
-                            <span class="tag">Vue.js</span>
-                            <span class="tag">Firebase</span>
-                            <span class="tag">Tailwind</span>
-                            <span class="tag">WebSocket</span>
+                        <div class="project__content">
+                            <h3 class="project__title">상업시설 바닥 콘크리트 마감</h3>
+                            <p class="project__description">
+                                대형 상업시설의 바닥 콘크리트 미장 작업입니다. 
+                                넓은 면적을 균일하게 시공하여 내구성과 미관을 모두 확보했습니다.
+                            </p>
+                            <div class="project__tags">
+                                <span class="tag">바닥 마감</span>
+                                <span class="tag">대면적</span>
+                                <span class="tag">상업시설</span>
+                            </div>
                         </div>
-                    </div>
-                </article>
+                    </article>
 
-                <!-- Project Card 3 -->
-                <article class="project__card" data-animate>
-                    <div class="project__image">
-                        <div class="project__placeholder project__placeholder-3">
-                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="32" cy="32" r="20" stroke="currentColor" stroke-width="2"/>
-                                <path d="M32 20V32L40 40" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                <circle cx="32" cy="12" r="2" fill="currentColor"/>
-                            </svg>
+                    <!-- Project Card 3 -->
+                    <article class="project__card">
+                        <div class="project__image">
+                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop&q=80" 
+                                 alt="아파트 단지 외벽 마감" 
+                                 loading="lazy">
                         </div>
-                    </div>
-                    <div class="project__content">
-                        <h3 class="project__title">Analytics Dashboard</h3>
-                        <p class="project__description">
-                            데이터 시각화 대시보드입니다. 차트, 그래프, 실시간 데이터 업데이트 기능을 구현했습니다.
-                        </p>
-                        <div class="project__tags">
-                            <span class="tag">Next.js</span>
-                            <span class="tag">TypeScript</span>
-                            <span class="tag">D3.js</span>
-                            <span class="tag">PostgreSQL</span>
+                        <div class="project__content">
+                            <h3 class="project__title">아파트 단지 외벽 마감</h3>
+                            <p class="project__description">
+                                신축 아파트 단지의 외벽 미장 마감 작업입니다. 
+                                기후 변화에 강한 내구성과 우수한 방수 성능을 제공합니다.
+                            </p>
+                            <div class="project__tags">
+                                <span class="tag">외벽 마감</span>
+                                <span class="tag">방수 처리</span>
+                                <span class="tag">아파트</span>
+                            </div>
                         </div>
-                    </div>
-                </article>
+                    </article>
+
+                    <!-- Project Card 4 -->
+                    <article class="project__card">
+                        <div class="project__image">
+                            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&q=80" 
+                                 alt="빌라 리모델링 미장 작업" 
+                                 loading="lazy">
+                        </div>
+                        <div class="project__content">
+                            <h3 class="project__title">빌라 리모델링 미장 작업</h3>
+                            <p class="project__description">
+                                노후 빌라의 전면 리모델링 미장 작업입니다. 
+                                기존 벽면을 완벽히 보수하여 새 건물처럼 깨끗한 마감을 완성했습니다.
+                            </p>
+                            <div class="project__tags">
+                                <span class="tag">리모델링</span>
+                                <span class="tag">벽면 보수</span>
+                                <span class="tag">빌라</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project Card 5 -->
+                    <article class="project__card">
+                        <div class="project__image">
+                            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop&q=80" 
+                                 alt="사무실 내부 벽면 시공" 
+                                 loading="lazy">
+                        </div>
+                        <div class="project__content">
+                            <h3 class="project__title">사무실 내부 벽면 시공</h3>
+                            <p class="project__description">
+                                현대적인 오피스 공간의 내부 벽면 미장 작업입니다. 
+                                깔끔한 마감과 정확한 치수로 세련된 업무 환경을 조성했습니다.
+                            </p>
+                            <div class="project__tags">
+                                <span class="tag">내부 시공</span>
+                                <span class="tag">오피스</span>
+                                <span class="tag">모던 마감</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project Card 6 -->
+                    <article class="project__card">
+                        <div class="project__image">
+                            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&h=600&fit=crop&q=80" 
+                                 alt="주택 화장실 타일 미장" 
+                                 loading="lazy">
+                        </div>
+                        <div class="project__content">
+                            <h3 class="project__title">주택 화장실 타일 미장</h3>
+                            <p class="project__description">
+                                프리미엄 주택 화장실의 타일 미장 작업입니다. 
+                                정밀한 수평/수직 맞춤으로 고급스러운 타일 마감을 완성했습니다.
+                            </p>
+                            <div class="project__tags">
+                                <span class="tag">타일 시공</span>
+                                <span class="tag">화장실</span>
+                                <span class="tag">정밀 시공</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project Card 7 -->
+                    <article class="project__card">
+                        <div class="project__image">
+                            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&h=600&fit=crop&q=80" 
+                                 alt="신축 빌딩 로비 마감" 
+                                 loading="lazy">
+                        </div>
+                        <div class="project__content">
+                            <h3 class="project__title">신축 빌딩 로비 마감</h3>
+                            <p class="project__description">
+                                고층 빌딩 로비의 벽면 및 천장 미장 작업입니다. 
+                                고급스러운 디자인을 구현하기 위한 섬세한 마감 처리를 진행했습니다.
+                            </p>
+                            <div class="project__tags">
+                                <span class="tag">로비 시공</span>
+                                <span class="tag">천장 마감</span>
+                                <span class="tag">고급 빌딩</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project Card 8 -->
+                    <article class="project__card">
+                        <div class="project__image">
+                            <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&h=600&fit=crop&q=80" 
+                                 alt="전원주택 외부 석재 마감" 
+                                 loading="lazy">
+                        </div>
+                        <div class="project__content">
+                            <h3 class="project__title">전원주택 외부 석재 마감</h3>
+                            <p class="project__description">
+                                전원주택 외벽의 석재 미장 마감 작업입니다. 
+                                자연스러운 질감과 견고한 시공으로 오래도록 아름다운 외관을 유지합니다.
+                            </p>
+                            <div class="project__tags">
+                                <span class="tag">석재 마감</span>
+                                <span class="tag">외벽 시공</span>
+                                <span class="tag">전원주택</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Navigation Arrows -->
+                <button class="slider__nav slider__nav--prev" aria-label="이전 프로젝트">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <button class="slider__nav slider__nav--next" aria-label="다음 프로젝트">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
             </div>
         </div>
     </section>
