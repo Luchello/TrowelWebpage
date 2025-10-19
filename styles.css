@@ -242,7 +242,8 @@ button {
     z-index: -1;
     overflow: hidden;
     background: 
-        linear-gradient(135deg, transparent 0%, rgba(26, 26, 26, 0.5) 100%),
+        linear-gradient(135deg, transparent 0%, rgba(26, 26, 26, 0.45) 100%),
+        url('assets/textures/concrete-light.svg') repeat,
         repeating-linear-gradient(
             0deg,
             transparent,
@@ -257,6 +258,8 @@ button {
             rgba(255, 255, 255, 0.02) 2px,
             rgba(255, 255, 255, 0.02) 4px
         );
+    background-size: auto, 512px 512px, auto, auto;
+    background-blend-mode: normal, multiply, normal, normal;
 }
 
 /* 노이즈 텍스처로 콘크리트 느낌 */
@@ -284,8 +287,9 @@ button {
         linear-gradient(rgba(255, 140, 66, 0.05) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 140, 66, 0.05) 1px, transparent 1px);
     background-size: 50px 50px;
-    opacity: 0.3;
-    animation: gridSlide 30s linear infinite;
+    opacity: 0.22;
+    animation: gridSlide 45s linear infinite;
+    will-change: transform;
 }
 
 @keyframes gridSlide {
@@ -311,11 +315,12 @@ button {
     position: absolute;
     background: linear-gradient(90deg, 
         transparent 0%, 
-        rgba(255, 140, 66, 0.3) 50%, 
+        rgba(255, 140, 66, 0.25) 50%, 
         transparent 100%
     );
     height: 2px;
     width: 100%;
+    will-change: transform, opacity;
 }
 
 .accent-line-1 {
@@ -351,8 +356,10 @@ button {
 
 .shape {
     position: absolute;
-    filter: blur(100px);
-    opacity: 0.4;
+    filter: blur(70px);
+    opacity: 0.35;
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 /* 따뜻한 오렌지 (안전복/작업 도구 색상) */
@@ -1099,6 +1106,11 @@ button {
         grid-template-columns: 1fr;
     }
     
+    .shape {
+        filter: blur(50px);
+        opacity: 0.28;
+    }
+    
     .shape-1 {
         width: 400px;
         height: 400px;
@@ -1114,6 +1126,19 @@ button {
     .shape-3 {
         width: 320px;
         height: 320px;
+    }
+    
+    .accent-line {
+        opacity: 0.18;
+    }
+    
+    .accent-line-2 {
+        animation-duration: 18s;
+    }
+    
+    .hero__grid-pattern {
+        opacity: 0.15;
+        animation: gridSlide 60s linear infinite;
     }
 }
 
@@ -1226,6 +1251,26 @@ button {
     .project__card {
         flex: 0 0 calc(33.333% - var(--spacing-lg));
         min-width: calc(33.333% - var(--spacing-lg));
+    }
+}
+
+/* ==================== ACCESSIBILITY: REDUCED MOTION ==================== */
+@media (prefers-reduced-motion: reduce) {
+    .hero__grid-pattern,
+    .accent-line,
+    .shape-1,
+    .shape-2,
+    .shape-3,
+    .scroll-down {
+        animation: none !important;
+    }
+    
+    .tool-card,
+    .strength__card,
+    .project__card,
+    .button,
+    .nav__link {
+        transition: none !important;
     }
 }
 
