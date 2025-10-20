@@ -222,6 +222,76 @@ button {
     color: var(--text-primary);
 }
 
+/* ==================== HERO PHOTO SLIDER ==================== */
+.hero__photo-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.hero__photo-slider img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0;
+    animation: heroFade 12s infinite ease-in-out;
+}
+
+/* 단일 이미지인 경우, 페이드 아웃 방지 */
+.hero__photo-slider img:only-child {
+    opacity: 1;
+    animation: none;
+}
+
+.hero__photo-slider img:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.hero__photo-slider img:nth-child(2) {
+    animation-delay: 6s;
+}
+
+@keyframes heroFade {
+    0%, 45% {
+        opacity: 1;
+    }
+    50%, 95% {
+        opacity: 0;
+    }
+}
+
+/* 기존 요소들의 z-index 조정 */
+.hero__grid-pattern,
+.hero__accent-lines,
+.shape {
+    z-index: 1;
+}
+
+/* 가독성 향상을 위한 상단 그라데이션 오버레이 */
+.hero__bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, 
+        rgba(10, 10, 10, 0.55) 0%, 
+        rgba(10, 10, 10, 0.25) 40%, 
+        rgba(10, 10, 10, 0) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
 /* ==================== HERO SECTION ==================== */
 .hero {
     position: relative;
@@ -1256,6 +1326,7 @@ button {
 
 /* ==================== ACCESSIBILITY: REDUCED MOTION ==================== */
 @media (prefers-reduced-motion: reduce) {
+    .hero__photo-slider img,
     .hero__grid-pattern,
     .accent-line,
     .shape-1,
@@ -1263,6 +1334,10 @@ button {
     .shape-3,
     .scroll-down {
         animation: none !important;
+    }
+    
+    .hero__photo-slider img {
+        opacity: 1 !important;
     }
     
     .tool-card,
