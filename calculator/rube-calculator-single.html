@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>간이 루베 계산기</title>
+</head>
+<body>
+
+<!-- BEGIN: RUBE CALCULATOR -->
+<div id="rube-calculator"></div>
+
+<style>
+/* Rube Calculator Styles - Scoped to #rube-calculator */
+#rube-calculator {
+    --rc-primary: #2563eb;
+    --rc-primary-hover: #1d4ed8;
+    --rc-bg: #ffffff;
+    --rc-text: #1f2937;
+    --rc-text-muted: #6b7280;
+    --rc-border: #d1d5db;
+    --rc-error: #dc2626;
+    --rc-shadow: rgba(0, 0, 0, 0.1);
+    --rc-success: #16a34a;
+    
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    color: var(--rc-text);
+    line-height: 1.6;
+}
+
+#rube-calculator * {
+    box-sizing: border-box;
+}
+
+#rube-calculator .rc-card {
+    background: var(--rc-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px var(--rc-shadow), 0 1px 3px var(--rc-shadow);
+    padding: 24px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#rube-calculator .rc-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 24px 0;
+    text-align: center;
+    color: var(--rc-text);
+}
+
+#rube-calculator .rc-form-group {
+    margin-bottom: 20px;
+}
+
+#rube-calculator .rc-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: var(--rc-text);
+}
+
+#rube-calculator .rc-input-wrapper {
+    position: relative;
+}
+
+#rube-calculator .rc-input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid var(--rc-border);
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.2s;
+    background: var(--rc-bg);
+    color: var(--rc-text);
+}
+
+#rube-calculator .rc-input:focus {
+    outline: none;
+    border-color: var(--rc-primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+#rube-calculator .rc-input.rc-error-input {
+    border-color: var(--rc-error);
+}
+
+#rube-calculator .rc-unit-group {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+#rube-calculator .rc-unit-group .rc-input {
+    flex: 1;
+}
+
+
+#rube-calculator .rc-helper {
+    display: block;
+    font-size: 13px;
+    margin-top: 4px;
+    color: var(--rc-text-muted);
+}
+
+#rube-calculator .rc-helper-info {
+    color: var(--rc-text-muted);
+}
+
+#rube-calculator .rc-helper-error {
+    color: var(--rc-error);
+    font-weight: 500;
+}
+
+#rube-calculator .rc-result {
+    background: linear-gradient(135deg, var(--rc-primary), var(--rc-primary-hover));
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    margin: 24px 0;
+    font-size: 18px;
+    font-weight: 700;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#rube-calculator .rc-result-empty {
+    background: #f9fafb;
+    color: var(--rc-text-muted);
+    font-weight: 500;
+    font-size: 14px;
+}
+
+#rube-calculator .rc-disclaimer {
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: 16px;
+    font-size: 12px;
+    color: var(--rc-text-muted);
+    opacity: 0.8;
+    line-height: 1.5;
+}
+
+#rube-calculator .rc-button-group {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+#rube-calculator .rc-btn {
+    flex: 1;
+    min-width: 120px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: var(--rc-primary);
+    color: white;
+}
+
+#rube-calculator .rc-btn:hover:not(:disabled) {
+    background: var(--rc-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+}
+
+#rube-calculator .rc-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+#rube-calculator .rc-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+}
+
+#rube-calculator .rc-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#rube-calculator .rc-btn-secondary {
+    background: #6b7280;
+}
+
+#rube-calculator .rc-btn-secondary:hover:not(:disabled) {
+    background: #4b5563;
+    box-shadow: 0 4px 8px rgba(107, 114, 128, 0.3);
+}
+
+#rube-calculator .rc-btn-success {
+    background: var(--rc-success);
+}
+
+#rube-calculator .rc-btn-success:hover:not(:disabled) {
+    background: #15803d;
+    box-shadow: 0 4px 8px rgba(22, 163, 74, 0.3);
+}
+
+#rube-calculator .rc-copy-feedback {
+    text-align: center;
+    margin-top: 8px;
+    font-size: 14px;
+    color: var(--rc-success);
+    font-weight: 500;
+    min-height: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    #rube-calculator .rc-card {
+        padding: 16px;
+    }
+    
+    #rube-calculator .rc-title {
+        font-size: 20px;
+        margin-bottom: 16px;
+    }
+    
+    #rube-calculator .rc-button-group {
+        flex-direction: column;
+    }
+    
+    #rube-calculator .rc-btn {
+        width: 100%;
+        min-width: auto;
+    }
+}
+
+@media (max-width: 360px) {
+    #rube-calculator .rc-card {
+        padding: 12px;
+        border-radius: 8px;
+    }
+    
+    #rube-calculator .rc-unit-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+</style>
+
+<script>
+(function() {
+    'use strict';
+    
+    // Wait for DOM to be ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initCalculator);
+    } else {
+        initCalculator();
+    }
+    
+    function initCalculator() {
+        const container = document.getElementById('rube-calculator');
+        if (!container) {
+            console.error('Rube Calculator: Container #rube-calculator not found');
+            return;
+        }
+        
+        // Create calculator HTML
+        container.innerHTML = `
+            <div class="rc-card">
+                <h1 class="rc-title">간이 루베 계산기</h1>
+                
+                <div class="rc-form-group">
+                    <label for="rc-length" class="rc-label">가로 (m)</label>
+                    <input 
+                        type="number" 
+                        id="rc-length" 
+                        class="rc-input" 
+                        placeholder="예) 10"
+                        step="0.01"
+                        min="0"
+                        aria-describedby="rc-length-error"
+                    >
+                    <span id="rc-length-error" class="rc-helper rc-helper-error" role="alert"></span>
+                </div>
+                
+                <div class="rc-form-group">
+                    <label for="rc-width" class="rc-label">세로 (m)</label>
+                    <input 
+                        type="number" 
+                        id="rc-width" 
+                        class="rc-input" 
+                        placeholder="예) 5"
+                        step="0.01"
+                        min="0"
+                        aria-describedby="rc-width-error"
+                    >
+                    <span id="rc-width-error" class="rc-helper rc-helper-error" role="alert"></span>
+                </div>
+                
+                <div class="rc-form-group">
+                    <label for="rc-thickness" class="rc-label">두께 (높이) (cm)</label>
+                    <input 
+                        type="number" 
+                        id="rc-thickness" 
+                        class="rc-input" 
+                        placeholder="예) 20"
+                        step="0.01"
+                        min="0"
+                        aria-describedby="rc-thickness-helper rc-thickness-error"
+                    >
+                    <span id="rc-thickness-helper" class="rc-helper rc-helper-info">두께가 20cm면 20을 입력</span>
+                    <span id="rc-thickness-error" class="rc-helper rc-helper-error" role="alert"></span>
+                </div>
+                
+                <div id="rc-result" class="rc-result rc-result-empty" role="status" aria-live="polite">
+                    값을 입력하면 자동으로 계산됩니다
+                </div>
+                <div class="rc-disclaimer">
+                    ※ 이 계산은 대략적인 값이며, 현장 상황에 따라 상이할 수 있습니다.
+                </div>
+                
+                <div class="rc-button-group">
+                    <button type="button" id="rc-reset-btn" class="rc-btn rc-btn-secondary">초기화</button>
+                    <button type="button" id="rc-copy-btn" class="rc-btn rc-btn-success" disabled>복사</button>
+                </div>
+                
+                <div id="rc-copy-feedback" class="rc-copy-feedback"></div>
+            </div>
+        `;
+        
+        // Get elements
+        const lengthInput = document.getElementById('rc-length');
+        const widthInput = document.getElementById('rc-width');
+        const thicknessInput = document.getElementById('rc-thickness');
+        const resultDiv = document.getElementById('rc-result');
+        const resetBtn = document.getElementById('rc-reset-btn');
+        const copyBtn = document.getElementById('rc-copy-btn');
+        const copyFeedback = document.getElementById('rc-copy-feedback');
+        
+        const lengthError = document.getElementById('rc-length-error');
+        const widthError = document.getElementById('rc-width-error');
+        const thicknessError = document.getElementById('rc-thickness-error');
+        
+        let currentResult = null;
+        
+        // Validation function
+        function validateInput(value, errorElement, inputElement) {
+            const num = parseFloat(value);
+            if (value === '' || value === null) {
+                errorElement.textContent = '';
+                inputElement.classList.remove('rc-error-input');
+                return null;
+            }
+            if (isNaN(num) || num <= 0) {
+                errorElement.textContent = '숫자를 입력해 주세요';
+                inputElement.classList.add('rc-error-input');
+                return null;
+            }
+            errorElement.textContent = '';
+            inputElement.classList.remove('rc-error-input');
+            return num;
+        }
+        
+        // Calculate function
+        function calculate() {
+            const length = validateInput(lengthInput.value, lengthError, lengthInput);
+            const width = validateInput(widthInput.value, widthError, widthInput);
+            const thicknessCm = validateInput(thicknessInput.value, thicknessError, thicknessInput);
+            
+            if (length === null || width === null || thicknessCm === null) {
+                resultDiv.textContent = '올바른 값을 입력해주세요';
+                resultDiv.className = 'rc-result rc-result-empty';
+                copyBtn.disabled = true;
+                currentResult = null;
+                return;
+            }
+            
+            // Convert cm to m
+            const thicknessM = thicknessCm / 100;
+            
+            // Calculate volume
+            const volume = length * width * thicknessM;
+            const volumeRounded = Math.round(volume * 100) / 100;
+            
+            currentResult = volumeRounded;
+            resultDiv.textContent = `필요 루베: ${volumeRounded.toFixed(2)}`;
+            resultDiv.className = 'rc-result';
+            copyBtn.disabled = false;
+        }
+        
+        // Reset function
+        function reset() {
+            lengthInput.value = '';
+            widthInput.value = '';
+            thicknessInput.value = '';
+            
+            lengthError.textContent = '';
+            widthError.textContent = '';
+            thicknessError.textContent = '';
+            
+            lengthInput.classList.remove('rc-error-input');
+            widthInput.classList.remove('rc-error-input');
+            thicknessInput.classList.remove('rc-error-input');
+            
+            resultDiv.textContent = '값을 입력하면 자동으로 계산됩니다';
+            resultDiv.className = 'rc-result rc-result-empty';
+            copyBtn.disabled = true;
+            copyFeedback.textContent = '';
+            currentResult = null;
+        }
+        
+        // Copy function
+        async function copyResult() {
+            if (currentResult === null) return;
+            
+            try {
+                const textToCopy = currentResult.toFixed(2);
+                await navigator.clipboard.writeText(textToCopy);
+                copyFeedback.textContent = '✓ 복사되었습니다!';
+                setTimeout(() => {
+                    copyFeedback.textContent = '';
+                }, 2000);
+            } catch (err) {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = currentResult.toFixed(2);
+                textArea.style.position = 'fixed';
+                textArea.style.opacity = '0';
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    copyFeedback.textContent = '✓ 복사되었습니다!';
+                    setTimeout(() => {
+                        copyFeedback.textContent = '';
+                    }, 2000);
+                } catch (err) {
+                    copyFeedback.textContent = '복사 실패';
+                }
+                document.body.removeChild(textArea);
+            }
+        }
+        
+        // Parse URL parameters
+        function parseURLParams() {
+            const params = new URLSearchParams(window.location.search);
+            const length = params.get('length');
+            const width = params.get('width');
+            let thickness = params.get('thickness');
+            const unit = params.get('unit');
+            
+            if (length) lengthInput.value = length;
+            if (width) widthInput.value = width;
+            if (thickness) {
+                // Convert m to cm if unit is 'm' for backward compatibility
+                if (unit === 'm') {
+                    thickness = parseFloat(thickness) * 100;
+                }
+                thicknessInput.value = thickness;
+            }
+            
+            // Auto-calculate if values are provided
+            if (length || width || thickness) {
+                calculate();
+            }
+        }
+        
+        // Event listeners
+        lengthInput.addEventListener('input', calculate);
+        widthInput.addEventListener('input', calculate);
+        thicknessInput.addEventListener('input', calculate);
+        
+        resetBtn.addEventListener('click', reset);
+        copyBtn.addEventListener('click', copyResult);
+        
+        // Initialize with URL parameters
+        parseURLParams();
+    }
+})();
+</script>
+<!-- END: RUBE CALCULATOR -->
+
+</body>
+</html>
+

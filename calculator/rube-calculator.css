@@ -1,0 +1,234 @@
+/* Rube Calculator Styles - Scoped to #rube-calculator */
+#rube-calculator {
+    --rc-primary: #2563eb;
+    --rc-primary-hover: #1d4ed8;
+    --rc-bg: #ffffff;
+    --rc-text: #1f2937;
+    --rc-text-muted: #6b7280;
+    --rc-border: #d1d5db;
+    --rc-error: #dc2626;
+    --rc-shadow: rgba(0, 0, 0, 0.1);
+    --rc-success: #16a34a;
+    
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    color: var(--rc-text);
+    line-height: 1.6;
+}
+
+#rube-calculator * {
+    box-sizing: border-box;
+}
+
+#rube-calculator .rc-card {
+    background: var(--rc-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px var(--rc-shadow), 0 1px 3px var(--rc-shadow);
+    padding: 24px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#rube-calculator .rc-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 24px 0;
+    text-align: center;
+    color: var(--rc-text);
+}
+
+#rube-calculator .rc-form-group {
+    margin-bottom: 20px;
+}
+
+#rube-calculator .rc-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: var(--rc-text);
+}
+
+#rube-calculator .rc-input-wrapper {
+    position: relative;
+}
+
+#rube-calculator .rc-input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid var(--rc-border);
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.2s;
+    background: var(--rc-bg);
+    color: var(--rc-text);
+}
+
+#rube-calculator .rc-input:focus {
+    outline: none;
+    border-color: var(--rc-primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+#rube-calculator .rc-input.rc-error-input {
+    border-color: var(--rc-error);
+}
+
+#rube-calculator .rc-unit-group {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+#rube-calculator .rc-unit-group .rc-input {
+    flex: 1;
+}
+
+
+#rube-calculator .rc-helper {
+    display: block;
+    font-size: 13px;
+    margin-top: 4px;
+    color: var(--rc-text-muted);
+}
+
+#rube-calculator .rc-helper-info {
+    color: var(--rc-text-muted);
+}
+
+#rube-calculator .rc-helper-error {
+    color: var(--rc-error);
+    font-weight: 500;
+}
+
+#rube-calculator .rc-result {
+    background: linear-gradient(135deg, var(--rc-primary), var(--rc-primary-hover));
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    margin: 24px 0;
+    font-size: 18px;
+    font-weight: 700;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#rube-calculator .rc-result-empty {
+    background: #f9fafb;
+    color: var(--rc-text-muted);
+    font-weight: 500;
+    font-size: 14px;
+}
+
+#rube-calculator .rc-disclaimer {
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: 16px;
+    font-size: 12px;
+    color: var(--rc-text-muted);
+    opacity: 0.8;
+    line-height: 1.5;
+}
+
+#rube-calculator .rc-button-group {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+#rube-calculator .rc-btn {
+    flex: 1;
+    min-width: 120px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: var(--rc-primary);
+    color: white;
+}
+
+#rube-calculator .rc-btn:hover:not(:disabled) {
+    background: var(--rc-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+}
+
+#rube-calculator .rc-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+#rube-calculator .rc-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+}
+
+#rube-calculator .rc-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#rube-calculator .rc-btn-secondary {
+    background: #6b7280;
+}
+
+#rube-calculator .rc-btn-secondary:hover:not(:disabled) {
+    background: #4b5563;
+    box-shadow: 0 4px 8px rgba(107, 114, 128, 0.3);
+}
+
+#rube-calculator .rc-btn-success {
+    background: var(--rc-success);
+}
+
+#rube-calculator .rc-btn-success:hover:not(:disabled) {
+    background: #15803d;
+    box-shadow: 0 4px 8px rgba(22, 163, 74, 0.3);
+}
+
+#rube-calculator .rc-copy-feedback {
+    text-align: center;
+    margin-top: 8px;
+    font-size: 14px;
+    color: var(--rc-success);
+    font-weight: 500;
+    min-height: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    #rube-calculator .rc-card {
+        padding: 16px;
+    }
+    
+    #rube-calculator .rc-title {
+        font-size: 20px;
+        margin-bottom: 16px;
+    }
+    
+    #rube-calculator .rc-button-group {
+        flex-direction: column;
+    }
+    
+    #rube-calculator .rc-btn {
+        width: 100%;
+        min-width: auto;
+    }
+}
+
+@media (max-width: 360px) {
+    #rube-calculator .rc-card {
+        padding: 12px;
+        border-radius: 8px;
+    }
+    
+    #rube-calculator .rc-unit-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
