@@ -215,11 +215,28 @@ button {
     width: 100%;
 }
 
-.nav__toggle,
-.nav__close {
-    display: none;
-    cursor: pointer;
-    color: var(--text-primary);
+/* Navigation CTA Buttons */
+.nav__item--cta .nav__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 0.875rem;
+    border-radius: 0.5rem;
+    background: var(--accent-gradient);
+    color: #fff;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.nav__item--cta .nav__cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 140, 66, 0.35);
+}
+
+.nav__contact-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
 }
 
 /* ==================== HERO PHOTO SLIDER ==================== */
@@ -1069,42 +1086,23 @@ button {
         --font-size-h3: 1.25rem;
     }
     
-    .nav__menu {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 75%;
-        height: 100vh;
-        background: rgba(10, 10, 10, 0.95);
-        backdrop-filter: blur(10px);
-        padding: var(--spacing-xl) var(--spacing-lg);
-        transition: right 0.4s ease;
-    }
-    
-    .nav__menu.show-menu {
-        right: 0;
-    }
-    
     .nav__list {
-        flex-direction: column;
-        gap: var(--spacing-lg);
-        margin-top: 4rem;
+        flex-wrap: wrap;
+        gap: var(--spacing-md);
+        justify-content: center;
     }
     
     .nav__link {
-        font-size: 1.25rem;
+        font-size: 1rem;
     }
     
-    .nav__toggle,
-    .nav__close {
-        display: flex;
+    /* Hide text on mobile, show icons only */
+    .nav__contact-text {
+        display: none;
     }
     
-    .nav__close {
-        position: absolute;
-        top: 1.5rem;
-        right: 1.5rem;
-        font-size: 1.5rem;
+    .nav__item--cta .nav__cta {
+        padding: 0.5rem;
     }
     
     .hero__container {

@@ -2,7 +2,6 @@
  * Portfolio Website - Main JavaScript
  * 
  * Features:
- * - Responsive hamburger menu toggle
  * - Smooth scroll navigation with active link highlighting
  * - Scroll header background effect
  * - Intersection Observer for parallax animations
@@ -11,37 +10,7 @@
 
 // ==================== NAVIGATION MENU ====================
 
-const navMenu = document.getElementById('nav-menu');
-const navToggle = document.getElementById('nav-toggle');
-const navClose = document.getElementById('nav-close');
 const navLinks = document.querySelectorAll('.nav__link');
-
-/**
- * Show menu on hamburger click
- */
-if (navToggle) {
-    navToggle.addEventListener('click', () => {
-        navMenu.classList.add('show-menu');
-    });
-}
-
-/**
- * Hide menu on close button click
- */
-if (navClose) {
-    navClose.addEventListener('click', () => {
-        navMenu.classList.remove('show-menu');
-    });
-}
-
-/**
- * Hide menu when clicking on nav links
- */
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('show-menu');
-    });
-});
 
 // ==================== SCROLL HEADER ====================
 
