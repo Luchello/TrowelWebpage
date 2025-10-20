@@ -346,31 +346,20 @@ const projectsSlider = (() => {
      * Update navigation button states
      */
     const updateButtonStates = () => {
-        const maxIndex = getMaxIndex();
-        
-        if (currentIndex <= 0) {
-            prevBtn.style.opacity = '0.5';
-            prevBtn.style.cursor = 'not-allowed';
-        } else {
-            prevBtn.style.opacity = '1';
-            prevBtn.style.cursor = 'pointer';
-        }
-        
-        if (currentIndex >= maxIndex) {
-            nextBtn.style.opacity = '0.5';
-            nextBtn.style.cursor = 'not-allowed';
-        } else {
-            nextBtn.style.opacity = '1';
-            nextBtn.style.cursor = 'pointer';
-        }
+        // Always keep buttons active for looping slider
+        prevBtn.style.opacity = '1';
+        prevBtn.style.cursor = 'pointer';
+        nextBtn.style.opacity = '1';
+        nextBtn.style.cursor = 'pointer';
     };
     
     /**
      * Navigate to previous slide
      */
     const prevSlide = () => {
-        if (isTransitioning || currentIndex <= 0) return;
-        currentIndex = Math.max(0, currentIndex - 1);
+        if (isTransitioning) return;
+        const maxIndex = getMaxIndex();
+        currentIndex = (currentIndex <= 0) ? maxIndex : currentIndex - 1;
         updateSliderPosition();
     };
     
@@ -378,9 +367,9 @@ const projectsSlider = (() => {
      * Navigate to next slide
      */
     const nextSlide = () => {
+        if (isTransitioning) return;
         const maxIndex = getMaxIndex();
-        if (isTransitioning || currentIndex >= maxIndex) return;
-        currentIndex = Math.min(maxIndex, currentIndex + 1);
+        currentIndex = (currentIndex >= maxIndex) ? 0 : currentIndex + 1;
         updateSliderPosition();
     };
     
