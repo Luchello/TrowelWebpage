@@ -5,7 +5,6 @@
  * - Smooth scroll navigation with active link highlighting
  * - Scroll header background effect
  * - Intersection Observer for parallax animations
- * - Contact form validation
  */
 
 // ==================== NAVIGATION MENU ====================
@@ -110,86 +109,6 @@ const animatedElements = document.querySelectorAll('[data-animate]');
 animatedElements.forEach(element => {
     observer.observe(element);
 });
-
-// ==================== CONTACT FORM VALIDATION ====================
-
-const contactForm = document.getElementById('contact-form');
-const formMessage = document.getElementById('form-message');
-
-/**
- * Email validation using regex
- */
-function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
-
-/**
- * Show form message (success or error)
- */
-function showMessage(message, type) {
-    formMessage.textContent = message;
-    formMessage.className = `form__message ${type}`;
-    
-    // Auto-hide message after 5 seconds
-    setTimeout(() => {
-        formMessage.className = 'form__message';
-    }, 5000);
-}
-
-/**
- * Handle form submission
- */
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        // Get form values
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const message = document.getElementById('message').value.trim();
-        
-        // Validation
-        if (!name) {
-            showMessage('이름을 입력해주세요.', 'error');
-            return;
-        }
-        
-        if (!email) {
-            showMessage('이메일을 입력해주세요.', 'error');
-            return;
-        }
-        
-        if (!isValidEmail(email)) {
-            showMessage('올바른 이메일 형식을 입력해주세요.', 'error');
-            return;
-        }
-        
-        if (!message) {
-            showMessage('메시지를 입력해주세요.', 'error');
-            return;
-        }
-        
-        if (message.length < 10) {
-            showMessage('메시지는 최소 10자 이상 입력해주세요.', 'error');
-            return;
-        }
-        
-        // Success - In real application, this would send data to server
-        showMessage('메시지가 성공적으로 전송되었습니다! 곧 연락드리겠습니다.', 'success');
-        
-        // Reset form
-        contactForm.reset();
-        
-        // Log to console for demo purposes
-        console.log('Form submitted:', {
-            name,
-            email,
-            message,
-            timestamp: new Date().toISOString()
-        });
-    });
-}
 
 // ==================== SCROLL REVEAL ANIMATION ====================
 
