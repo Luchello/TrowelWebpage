@@ -1,0 +1,19 @@
+# Environment
+.env
+.env.*
+.env.local
+
+# Credentials
+*.pem
+*.key
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
